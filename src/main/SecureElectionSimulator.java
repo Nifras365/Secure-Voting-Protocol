@@ -9,7 +9,7 @@ import java.util.*;
 public class SecureElectionSimulator {
     public static void main(String[] args) {
         try {
-            System.out.println("============== A Story of a Secure Election ==============");
+            System.out.println("============== Secure Voting Protocol for Class Elections ==============");
             List<String> voterRoll = Arrays.asList("student01", "student02", "student03", "student04", "student05");
 
             AuthenticationServer authServer = new AuthenticationServer(voterRoll);
@@ -21,7 +21,8 @@ public class SecureElectionSimulator {
                     new Voter("student02", "Candidate B"),
                     new Voter("student03", "Candidate A"),
                     new Voter("student04", "Candidate C"),
-                    new Voter("student05", "Candidate A")
+                    new Voter("student05", "Candidate A"),
+                    new Voter("student05", "Candidate B")
             );
 
             for (Voter voter : voters) {
@@ -35,7 +36,7 @@ public class SecureElectionSimulator {
             }
 
             tallyAuthority.tallyVotes(votingServer.digitalBulletinBoard);
-            System.out.println("\n============== End of Story ==============");
+            System.out.println("\n============== End ==============");
 
         } catch (Exception e) {
             e.printStackTrace();
