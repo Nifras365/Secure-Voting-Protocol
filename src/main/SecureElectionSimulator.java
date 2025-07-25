@@ -22,7 +22,8 @@ public class SecureElectionSimulator {
                     new Voter("student03", "Candidate A"),
                     new Voter("student04", "Candidate C"),
                     new Voter("student05", "Candidate A"),
-                    new Voter("student05", "Candidate B")
+                    new Voter("student05", "Candidate B"),
+                    new Voter("student06", "Candidate B")
             );
 
             for (Voter voter : voters) {

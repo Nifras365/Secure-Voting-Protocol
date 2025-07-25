@@ -13,7 +13,7 @@ public class VotingServer {
 
     public VotingServer(PublicKey authServerPublicKey) {
         this.authServerPublicKey = authServerPublicKey;
-        System.out.println("✅ Voting Server is ready. It has the ID Checker's PUBLIC key to check seals.");
+        System.out.println("🟢 Voting Server is ready. It has the ID Checker's PUBLIC key to check seals.");
     }
 
     public void receiveVote(Voter voter, byte[] encryptedVote) throws Exception {
@@ -25,16 +25,16 @@ public class VotingServer {
         boolean isSignatureValid = CryptoUtils.verifySignature(voter.getToken(), voter.getTokenSignature(), authServerPublicKey);
 
         if (!isSignatureValid) {
-            System.out.println("   [VS] ❌ FAKE TICKET! Vote rejected.");
+            System.out.println("[VS] 🔴 FAKE TICKET! Vote rejected.");
             return;
         }
         if (usedTokens.contains(voter.getToken())) {
-            System.out.println("   [VS] ❌ Ticket already used. Vote rejected.");
+            System.out.println("[VS] 🔴 Ticket already used. Vote rejected.");
             return;
         }
 
         usedTokens.add(voter.getToken());
         digitalBulletinBoard.add(encryptedVote);
-        System.out.println("   [VS] ✅ Ticket valid! Vote accepted and added to bulletin board.");
+        System.out.println("[VS] 🟢 Ticket valid! Vote accepted and added to bulletin board.");
     }
 }

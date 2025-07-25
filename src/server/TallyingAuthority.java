@@ -12,7 +12,7 @@ public class TallyingAuthority {
 
     public TallyingAuthority() throws NoSuchAlgorithmException {
         this.keyPair = CryptoUtils.generateRsaKeyPair();
-        System.out.println("✅ Tallying Authority is ready. It has a secret key.");
+        System.out.println("🟢 Tallying Authority is ready. It has a secret key.");
     }
 
     public PublicKey getPublicKey() {
@@ -35,13 +35,13 @@ public class TallyingAuthority {
             if (CryptoUtils.hash(choice).equals(hash)) {
                 results.put(choice, results.getOrDefault(choice, 0) + 1);
             } else {
-                System.out.println("   ❌ Hash mismatch! Vote discarded.");
+                System.out.println("🔴 Hash mismatch! Vote discarded.");
             }
             voteNumber++;
         }
 
         System.out.println("\n************************");
-        System.out.println("* FINAL ELECTION RESULTS  *");
+        System.out.println("* FINAL ELECTION RESULTS *");
         System.out.println("************************");
         results.forEach((candidate, count) ->
                 System.out.println("Candidate '" + candidate + "': " + count + " votes")

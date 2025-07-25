@@ -16,7 +16,7 @@ public class AuthenticationServer {
     public AuthenticationServer(List<String> eligibleVoters) throws NoSuchAlgorithmException {
         this.keyPair = CryptoUtils.generateRsaKeyPair();
         this.eligibleVoters = eligibleVoters;
-        System.out.println("✅ Authentication Server is ready. It has its own secret key for signing tokens.");
+        System.out.println("🟢 Authentication Server is ready. It has its own secret key for signing tokens.");
     }
 
     public PublicKey getPublicKey() {
@@ -31,11 +31,11 @@ public class AuthenticationServer {
         System.out.println("   [AS] Let me check my list...");
 
         if (!eligibleVoters.contains(voter.studentId) || votersWhoReceivedToken.contains(voter.studentId)) {
-            System.out.println("   [AS] ❌ Sorry, you're either not on the list or you've already received a ticket.");
+            System.out.println("[AS] 🔴 Sorry, you're either not on the list or you've already received a ticket.");
             return;
         }
 
-        System.out.println("   [AS] ✅ You are on the list! Here is your secret, one-time-use ticket.");
+        System.out.println("   [AS] 🟢 You are on the list! Here is your secret, one-time-use ticket.");
         String token = UUID.randomUUID().toString();
         System.out.println("   [AS] Your secret ticket number is: " + token);
 
